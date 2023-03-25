@@ -18,11 +18,18 @@ export class App extends Component{
     this.setState((prevState) =>
     { return { todos: [todo, ...prevState.todos] } })
 } 
+
+deleteTodo = (todoId) => {
+  console.log(todoId)
+  this.setState(prevState => {
+   return { todos: prevState.todos.filter(todo => todoId !== todo.id)}
+  })
+}
  
   render() {
     return<>
       <StudyForm createTasks ={this.createTasks} />
- <ListStudy todos={this.state.todos} />
+ <ListStudy todos={this.state.todos} deleteTodo={this.deleteTodo}/>
       </>
   }
 };
